@@ -89,7 +89,6 @@ while True:
     except (ValueError, OutsideRangeError):
         print('Error! The month input must be an integer or valid month name!')
         continue
-print(month)
 
 #accepting input day value
 while True:
@@ -105,21 +104,13 @@ while True:
         elif month % 2 != 2:
             maxDay = 30
         
-        if day >= 1 and day >= maxDay:
+        if day >= 1 and day <= maxDay:
             break
         else:
             raise OutsideRangeError
     except (ValueError, OutsideRangeError):
         print('Error! The year input must be an valid integer!')
         continue
-
-#
-#test1
-#
-print(year + '-' + month + '-' + day)
-#
-#test1
-#
 
 #accepting input futureYear value
 while True:
@@ -130,6 +121,54 @@ while True:
         print('Error! The year input must be an integer!')
         continue
 
+#checking the futureYear type
+futureYearType = lepYearChecker(futureYear)
+
+#accepting input futureMonth value
+while True:
+    try:
+        futureMonth = input('What month did you want to know about? ')
+
+        if futureMonth.isdigit() is True:
+            futureMonth = int(futureMonth)
+        else:
+            futureMonth = int(monthChecker(futureMonth))
+        
+        if futureMonth >= 1 and futureMonth <= 12:
+            break
+        else:
+            raise OutsideRangeError
+    except (ValueError, OutsideRangeError):
+        print('Error! The month input must be an integer or valid month name!')
+        continue
+
+#accepting input futureDay value
+while True:
+    try:
+        futureDay  = int(input('What day did you want to know about? '))
+
+        if futureMonth == 2 and futureMonth == 'regular year': 
+            maxDay = 28
+        elif futureMonth == 2 and futureMonth == 'leap year':
+            maxDay = 29
+        elif futureMonth % 2 == 0 and futureMonth != 2:
+            maxDay = 31
+        elif futureMonth % 2 != 2:
+            maxDay = 30
+        
+        if futureDay >= 1 and futureDay <= maxDay:
+            break
+        else:
+            raise OutsideRangeError
+    except (ValueError, OutsideRangeError):
+        print('Error! The year input must be an valid integer!')
+        continue
+
+#confirmation output
+print('OK, so you were born on:', str(year) + '-' + str(month) + '-' + str(day))
+print('...and You would like to know about:', str(futureYear) + '-' + str(futureMonth) + '-' + str(futureDay))
+
+#calculations
 age = futureYear - year
 
 print('I the year', futureYear, 'you will be', age, 'years old!')

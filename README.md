@@ -2,7 +2,7 @@
 
 ---
 
-### About me
+### Introduction
 
 Hellow there, my name is Mikołaj and this repository is my Python programming portfolio.
 

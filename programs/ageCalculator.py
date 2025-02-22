@@ -6,29 +6,42 @@ class OutsideRangeError(Exception):
 
 #checks and converts the month to an appropriate integer
 def monthChecker(month):
-    if month == 'jan' or month == 'january' or month == 'Jan' or month == 'January':
+    jan = ['jan', 'january', 'Jan', 'January']
+    feb = ['feb', 'february', 'Feb', 'February']
+    mar = ['mar', 'march', 'Mar', 'March']
+    apr = ['apr', 'april', 'Apr', 'April']
+    may = ['may', 'May']
+    jun = ['jun', 'june', 'Jun', 'June']
+    jul = ['jul', 'july', 'Jul', 'July']
+    aug = ['aug', 'august', 'Aug', 'August']
+    sep = ['sep', 'september', 'Sep', 'September']
+    oct = ['oct', 'october', 'Oct', 'October']
+    nov = ['nov', 'november', 'Nov', 'November']
+    dec = ['dec', 'december', 'Dec', 'December']
+
+    if month in jan:
         month = 1
-    elif month == 'feb' or month == 'february' or month == 'Feb' or month == 'February':
+    elif month in feb:
          month = 2
-    elif month == 'mar' or month == 'march' or month == 'Mar' or month == 'March':
+    elif month in mar:
         month = 3
-    elif month == 'apr' or month == 'april' or month == 'Apr' or month == 'April':
+    elif month in apr:
         month = 4
-    elif month == 'may' or month == 'May':
+    elif month in may:
         month = 5
-    elif month == 'jun' or month == 'june' or month == 'Jun' or month == 'June':
+    elif month in jun:
         month = 6
-    elif month == 'jul' or month == 'july' or month == 'Jul' or month == 'July':
+    elif month in jul:
         month = 7
-    elif month == 'aug' or month == 'august' or month == 'Aug' or month == 'August':
+    elif month in aug:
         month = 8
-    elif month == 'sep' or month == 'september' or month == 'Sep' or month == 'September':
+    elif month in sep:
         month = 9
-    elif month == 'oct' or month == 'october' or month == 'Oct' or month == 'October':
+    elif month in oct:
         month = 10
-    elif month == 'nov' or month == 'november' or month == 'Nov' or month == 'November':
+    elif month in nov:
         month = 11
-    elif month == 'dec' or month == 'december' or month == 'Dec' or month == 'December':
+    elif month in dec:
         month = 12
 
     return month

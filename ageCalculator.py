@@ -16,7 +16,7 @@ def monthChecker(month):
         month = 4
     elif month == 'may' or month == 'May':
         month = 5
-    elif month == 'jun' or month == 'june' or month == 'Jun' or month == 'February':
+    elif month == 'jun' or month == 'june' or month == 'Jun' or month == 'June':
         month = 6
     elif month == 'jul' or month == 'july' or month == 'Jul' or month == 'July':
         month = 7
@@ -169,8 +169,21 @@ print('OK, so you were born on:', str(year) + '-' + str(month) + '-' + str(day))
 print('...and You would like to know about:', str(futureYear) + '-' + str(futureMonth) + '-' + str(futureDay))
 
 #calculations
-age = futureYear - year
+if month < futureMonth:
+    age = futureYear - year
+elif month == futureMonth:
+    if day <= futureDay:
+        age = futureYear - year
+    elif day > futureDay:
+        age = futureYear - year - 1
+elif month > futureMonth:
+    age = futureYear - year - 1
 
+#exiting
+timestampNow = str(year) + '-' + str(month) + '-' + str(day)
+timestampFuture = str(futureYear) + '-' + str(futureMonth) + '-' + str(futureDay)
+print(timestampNow, '->', timestampFuture)
 print('I the year', futureYear, 'you will be', age, 'years old!')
+print()
 print('Thanks for using our program. Exiting...')
 exit()

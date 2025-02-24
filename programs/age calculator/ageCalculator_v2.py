@@ -15,13 +15,13 @@ def programEnd():
     print('\nThanks for using our program! See You next time!')
     sys.exit()
 
-######################################################################################################
-#program info                                                                                        #
-def programInfo():                                                                                   #
-    print('\nIn this program, You can check your age in the future,')                                #
-    print('by providing Your birthdate and a future date.')                                          #
-    print('REMEMBER! Whenever You want to exit program, enter \'/q\' to force quit.')   #to be added #
-######################################################################################################
+
+#program info                                                                                        
+def programInfo():                                                                                   
+    print('\nIn this program, You can check your age in the future,')                                
+    print('by providing Your birthdate and a future date.')                                          
+    print('REMEMBER! Whenever You want to exit program, enter \'/q\' to force quit.') 
+
 
 #leap year checker
 def leapYearChecker(year):
@@ -66,10 +66,13 @@ def inputAccepting(qtype, min_year):
     while True: #accepting and validating birthday input
         try:
             if qtype == 'b':
-                ans = input('Provide your date of birth in format \'YYYY/MM/DD\' or \'YYYY [moth name] DD:\' ')
+                ans = input('Provide your date of birth in format \'YYYY/MM/DD\' or \'YYYY [month name] DD:\' ')
             elif qtype == 'f':
-                ans = input('Provide your future date in format \'YYYY/MM/DD\' or \'YYYY [moth name] DD:\' ')
-
+                ans = input('Provide your future date in format \'YYYY/MM/DD\' or \'YYYY [month name] DD:\' ')
+            
+            if ans == '/q':
+                    programEnd()
+            
             year = int(ans[0:4])    #checking patterns
             if ans[4] == '/' and ans[7] == '/' and len(ans) == 10:
                 month = int(ans[5:7])
@@ -91,11 +94,11 @@ def inputAccepting(qtype, min_year):
                 raise NotRecognizedAnsError
 
         except(NotRecognizedAnsError, ValueError):
-            print('\nError! Answer not recongized!')
+            print('\nError! Answer not recognized!')
             print()
             continue
         except(NotValidYearError):
-            print('\nError! The future year must be grater or equla to birtday year!')
+            print('\nError! The future year must be greater or equal to birthday year!')
             print()
         except(EOFError):
             print('\nExiting due to EOF.')
@@ -127,7 +130,8 @@ def programBegin():
     while True: #start/exit game input
         try:
             start = input('Would You like to start the program? y/n | To get more info enter \'i\' ')
-
+            if start == '/q':
+                    programEnd()
             if start == 'y':
                 print()
                 break
@@ -168,7 +172,7 @@ def programAction ():
     print('You will be', calculations(year, month, day, futureYear, futureMonth, futureDay), 'years old!')
 
 
-#mmain code structure
+#main code structure
 def master():
     programBegin()
     programAction()
